@@ -1,5 +1,6 @@
 <?php
 
+use App\Buyer;
 use App\Category;
 use App\Product;
 use App\Seller;
