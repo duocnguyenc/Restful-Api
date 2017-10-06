@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use App\User;
 use Faker\Generator as Faker;
 
@@ -28,3 +29,12 @@ $factory->define(User::class, function (Faker $faker) {
         'admin' => $verified = $faker->randomElement([User::ADMIN_USER, User::REGULAR_USER]),
     ];
 });
+
+$factory->define(Category::class, function (Faker $faker) {
+
+    return [
+        'name' => $faker->word,
+        'description' => $faker->paragraph(1),
+    ];
+});
+
