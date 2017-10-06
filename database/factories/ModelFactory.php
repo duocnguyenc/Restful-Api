@@ -1,6 +1,7 @@
 <?php
 
 use App\Category;
+use App\Product;
 use App\User;
 use Faker\Generator as Faker;
 
@@ -38,3 +39,15 @@ $factory->define(Category::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(Product::class, function (Faker $faker) {
+
+    return [
+        'name' => $faker->word,
+        'description' => $faker->paragraph(1),
+        'quantity' => $faker->numberBetween(10, 20),
+        'status' => $faker->randomElement([Product::AVAILABLE_PRODUCT, Product::UNAVAILABLE_PRODUCT]),
+        'image' => $faker->randomElement(['dau-truong-sinh-tu.jpg', 'bat-lua.jpg', 'hung-nhai.jpg']),
+        'seller_id' => User::all()->random()->id,
+        //User::inRandomOrder()->first()->id,
+    ];
+});
