@@ -67,6 +67,7 @@ class CategoryController extends ApiController
         if ($category->isClean()) {
             return $this->errorResponse('You need to specify any different value to update', 422);
         }
+        
         $category->save();
         return $this->showOne($category);
     }
