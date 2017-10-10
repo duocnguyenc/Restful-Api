@@ -28,6 +28,8 @@ class TransactionController extends ApiController
      */
     public function show($id)
     {
-        //
+        $transaction = Transaction::findOrFail($id);
+
+        return $this->showOne($transaction);
     }
 }
