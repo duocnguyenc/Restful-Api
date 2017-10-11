@@ -22,6 +22,8 @@ class ProductBuyerTransactionController extends ApiController
         $rules = [
             'quantity' => 'required|integer|min:1'
         ];
+        $this->validate($request, $rules);
+
         if ($buyer->id == $product->seller_id) {
             return $this->errorResponse('The buyer must be different from the seller', 409);
         }
@@ -43,7 +45,7 @@ class ProductBuyerTransactionController extends ApiController
         }
 
         return DB::transaction(function() use ($request, $product, $buyer) {
-            $product->quantity = $request->quantity;
+            $product->quantity -= $request->quantity;
             $product->save();
 
             $transaction = Transaction::create([
