@@ -20,8 +20,8 @@ class BuyerTransformer extends TransformerAbstract
             'email' => (string)$buyer->email,
             'isVerified' => (int)$buyer->verified,
             'isAdmin' => ($buyer->admin === 'true'),
-            'creationDate' => $buyer->created_at,
-            'lastChange' => $buyer->updated_at,
+            'creationDate' => (string)$buyer->created_at,
+            'lastChange' => (string)$buyer->updated_at,
             'deletedDate' => isset($buyer->deleted_at) ? (string)$buyer->deleted_at : null,
         ];
     }
