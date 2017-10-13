@@ -5,6 +5,7 @@ namespace App\Traits;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Validator;
 
 trait ApiResponser
 {
@@ -68,8 +69,15 @@ trait ApiResponser
 
     protected function paginate(Collection $colection)
     {
+        $rules = [
+            'per_page' => 'integer|min:2|max:50',
+        ];
+        Validator::validate(request()->all(), $rules);
         $page = LengthAwarePaginator::resolveCurrentPage();
         $perPage = 15;
+        if (request()->has('per_page')) {
+            $perPage = (int)request()->per_page;
+        }
         $results = $colection->slice(($page - 1) * $perPage, $perPage)->values();
         $paginated = new LengthAwarePaginator($results, $colection->count(), $perPage, $page, [
                 'path' => LengthAwarePaginator::resolveCurrentPage(),
