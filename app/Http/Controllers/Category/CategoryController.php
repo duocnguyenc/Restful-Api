@@ -8,6 +8,13 @@ use App\Http\Controllers\ApiController;
 
 class CategoryController extends ApiController
 {
+    public function __construct($value='')
+    {
+        parent::__construct();
+
+        $this->middleware('transform.input:' . CategoryTransformer::class)->only(['store', 'update']);
+    }
+
     /**
      * Display a listing of the resource.
      *
