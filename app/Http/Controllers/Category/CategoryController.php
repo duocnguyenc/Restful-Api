@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Category;
 
 use App\Category;
-use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
+use App\Transformers\CategoryTransformer;
+use Illuminate\Http\Request;
 
 class CategoryController extends ApiController
 {
