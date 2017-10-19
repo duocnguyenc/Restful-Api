@@ -64,4 +64,4 @@ Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]
 Route::name('verify')->get('users/verify/{token}', 'User\UserController@verify');
 Route::name('resend')->get('users/{user}/resend', 'User\UserController@resend');
 
-Route::post('outh/token');
+Route::post('outh/token', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
