@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Buyer;
 use App\Policies\BuyerPolicy;
+use App\Policies\SellerPolicy;
+use App\Seller;
 use Carbon\Carbon;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -17,7 +19,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        Buyer::class => BuyerPolicy::class
+        Buyer::class => BuyerPolicy::class,
+        Seller::class => SellerPolicy::class,
     ];
 
     /**
