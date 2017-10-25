@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProductBuyerTransactionController extends ApiController
 {
-    public function __construct($value='')
+    public function __construct()
     {
         parent::__construct();
 
