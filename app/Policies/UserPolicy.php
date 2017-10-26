@@ -8,7 +8,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
 {
-    use HandlesAuthorization, AdminActions;
+    use HandlesAuthorization;
 
     /**
      * Determine whether the user can view the user.
